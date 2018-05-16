@@ -17,6 +17,8 @@ body {
 }
 
 
+
+
 #container {
 	margin: 10px auto;
 	max-width: 600px;
@@ -63,6 +65,12 @@ h1 {
 	box-shadow: 0 0 3pt 2pt yellow;
 }
 
+.tileHide{
+/*	outline: 1px solid yellow;*/
+	background: white;
+}
+
+
 button {
 	border: none;
 	background: none;
@@ -81,4 +89,13 @@ button:hover {
 	color: white;
 	background: #509060;
 }
+
+
+
+
+
+
+
+
+
 

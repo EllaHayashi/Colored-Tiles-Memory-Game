@@ -2,6 +2,7 @@ var isClicked = false; //if there is already another square picked
 var numberOfSquares = 12;
 var colors = generateRandomColors(numberOfSquares);
 var squares = document.querySelectorAll(".square");
+//var squares2 = document.querySelectAll(".square");
 var mainColor = pickedColor();
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
@@ -41,61 +42,77 @@ hardBtn.addEventListener("click", function(){
 	for(var i = 0; i<squares.length; i++)
 	{
 		squares[i].style.background = colors[i];
-		squares[i].style.display = "block";
+
 	}
 
 });
 
 
+
+
 for(var i = 0; i<squares.length; i++){
-	squares[i].style.backgroundColor = colors[i];	
 
+//	squares[i].style.backgroundColor = colors[i];	
 	squares[i].addEventListener("click",function(){
-		var clicked = this.style.backgroundColor;
-		var squareNum = 0;
-
+		var colorNum = 0;
+		for (var z = 0; z<squares.length; z++){
+			if(squares[z]===this)
+			{
+				colorNum = z;
+			}
+		}
+	this.style.backgroundColor = colors[colorNum];
+	var clicked = this.style.backgroundColor;
+//	alert(colors[i]);
+	
 		if(isClicked)
 		{
-			for(var i = 0; i<squares.length; i++){
 
-				if(squares[i].classList.contains("tileSelected"))
-				{
-					squareNum = i;
+			if(clicked !== "rgb(35, 35, 35)"){
+				var squareNum = 0;
+				for(var x = 0; x<squares.length; x++){
+
+					if(squares[x].classList.contains("tileSelected"))
+					{
+						squareNum = x;
+					}
 				}
-			}
+				squares[squareNum].style.backgroundColor = colors[squareNum];
+/*				setTimeout(function(){
 
-			if(squares[squareNum].style.backgroundColor===clicked)
-			{
-				this.style.backgroundColor = "#232323";
-				squares[squareNum].style.backgroundColor = "#232323";
-			}
-			else
-			{
+				}, 10000);*/
 
+				if(colors[squareNum]===clicked)
+//				if(squares[squareNum].style.backgroundColor===clicked)
+				{
+					this.style.backgroundColor = "rgb(35, 35, 35)";
+					squares[squareNum].style.backgroundColor = "rgb(35, 35, 35)";
+				}
+				else
+				{
+
+					this.style.backgroundColor = "rgb(250, 250, 250)";
+					squares[squareNum].style.backgroundColor = "rgb(250, 250, 250)";
+				}	
+				this.classList.remove("tileSelected");
+				squares[squareNum].classList.remove("tileSelected");
+				isClicked = false;
 			}
-			this.classList.remove("tileSelected");
-			squares[squareNum].classList.remove("tileSelected");
-//			lastClicked.classList.remove("tileSelected");
-			isClicked = false;
-/*			if(clicked === mainColor){
-				messageDisplay.textContent = "Correct!";
-				resetButton.textContent = "Play Again?";
-			}
-			else
-			{
-				this.style.backgroundColor = "#232323";
-				messageDisplay.textContent = "Try Again";
-			}
-*/
 		}
 		else{
-			this.classList.add("tileSelected");
-			isClicked = true;
+
+			if(clicked!=="rgb(35, 35, 35)")
+			{
+				this.classList.add("tileSelected");
+				isClicked = true;
+			}
 
 		}
 
 	});
 }
+
+
 
 
 //reset the new colors and new array
@@ -112,12 +129,14 @@ resetButton.addEventListener("click", function(){
 });
 
 
+
+
+
 function changeColors(color){
 	for(var i = 0; i<squares.length; i++)
 	{
 		squares[i].style.backgroundColor = color;
 	}
-
 
 }
 
