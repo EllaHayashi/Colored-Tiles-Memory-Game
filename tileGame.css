@@ -17,6 +17,20 @@ body {
 }
 
 
+.turnWhite{
+	background: white;
+	transition: background 1.5s;
+	-webkit-transition: background 1.5s;
+	-moz-transition: background 1.5s;
+}
+
+.turnBlack{
+	background: #353535;
+	transition: background 1.5s;
+	-webkit-transition: background 1.5s;
+	-moz-transition: background 1.5s;
+}
+
 
 
 #container {
@@ -56,20 +70,17 @@ h1 {
 }
 
 .selected {
-	color: white;
-	background: #509060;
+
+	background: white;
+	transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
 }
 
 .tileSelected{
 /*	outline: 1px solid yellow;*/
 	box-shadow: 0 0 3pt 2pt yellow;
 }
-
-.tileHide{
-/*	outline: 1px solid yellow;*/
-	background: white;
-}
-
 
 button {
 	border: none;

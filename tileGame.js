@@ -19,7 +19,13 @@ easyBtn.addEventListener("click", function(){
 	numberOfSquares = 6;
 	colors = generateRandomColors(numberOfSquares);
 	mainColor = pickedColor();
+	for (var i = 12; i<squares.length; i++)
+	{
+		squares[i].style.backgroundColor = "rgb(35, 35, 35)";
+	}
 
+
+/*
 	for(var i = 0; i<squares.length; i++)
 	{
 		if(colors[i]){
@@ -29,19 +35,20 @@ easyBtn.addEventListener("click", function(){
 			squares[i].style.display = "none";
 		}
 	}
-
+*/
 });
 
 //If the hard mode is activated
 hardBtn.addEventListener("click", function(){
 	hardBtn.classList.add("selected");
 	easyBtn.classList.remove("selected");
-	numberOfSquares = 6;
+	numberOfSquares = 12;
 	colors = generateRandomColors(numberOfSquares);
 	mainColor = pickedColor();
+	
 	for(var i = 0; i<squares.length; i++)
 	{
-		squares[i].style.background = colors[i];
+		squares[i].style.background = "rgb(250, 250, 250)";
 
 	}
 
@@ -61,6 +68,11 @@ for(var i = 0; i<squares.length; i++){
 				colorNum = z;
 			}
 		}
+
+	if(this.classList.contains("turnWhite"))
+	{
+		this.classList.remove("turnWhite")
+	}
 	this.style.backgroundColor = colors[colorNum];
 	var clicked = this.style.backgroundColor;
 //	alert(colors[i]);
@@ -77,22 +89,29 @@ for(var i = 0; i<squares.length; i++){
 						squareNum = x;
 					}
 				}
-				squares[squareNum].style.backgroundColor = colors[squareNum];
-/*				setTimeout(function(){
 
-				}, 10000);*/
+
+
+
 
 				if(colors[squareNum]===clicked)
 //				if(squares[squareNum].style.backgroundColor===clicked)
 				{
-					this.style.backgroundColor = "rgb(35, 35, 35)";
-					squares[squareNum].style.backgroundColor = "rgb(35, 35, 35)";
+//					this.style.backgroundColor = "rgb(35, 35, 35)";
+//					squares[squareNum].style.backgroundColor = "rgb(35, 35, 35)";
+
+
+					this.classList.add("turnBlack");
+					squares[squareNum].classList.add("turnBlack");
 				}
 				else
 				{
 
-					this.style.backgroundColor = "rgb(250, 250, 250)";
-					squares[squareNum].style.backgroundColor = "rgb(250, 250, 250)";
+					this.classList.add("turnWhite");
+					squares[squareNum].classList.add("turnWhite");
+
+//					this.style.backgroundColor = "rgb(250, 250, 250)";
+//					squares[squareNum].style.backgroundColor = "rgb(250, 250, 250)";
 				}	
 				this.classList.remove("tileSelected");
 				squares[squareNum].classList.remove("tileSelected");
@@ -103,6 +122,7 @@ for(var i = 0; i<squares.length; i++){
 
 			if(clicked!=="rgb(35, 35, 35)")
 			{
+				//this.classList.remove
 				this.classList.add("tileSelected");
 				isClicked = true;
 			}
